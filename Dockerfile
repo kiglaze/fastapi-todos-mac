@@ -8,8 +8,10 @@ ENV PYTHONPATH $PWD/todos
 
 COPY ./requirements.txt /requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt && \
-    rm /requirements.txt
+RUN apt-get update && apt-get install -y gcc && \
+    pip install --no-cache-dir -r requirements.txt && \
+    rm /requirements.txt && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY ./todos/app /todos/app
 COPY ./alembic.ini /alembic.ini

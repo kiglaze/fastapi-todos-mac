@@ -2,6 +2,7 @@ version: '3.9'
 
 services:
   web:
+    platform: linux/amd64
     env_file:
       - ./web-variables.env
       - ./db-variables.env
